@@ -103,7 +103,7 @@ bool some(Iterable<int> list, bool Function(int) someFunction) {
 }
 
 // Task 3
-// code Dart
+// 1- code Dart
 import 'dart:io';
 
 void main() {
@@ -134,4 +134,17 @@ int reducer(Iterable<int> list, int Function(int,int) reducerFunction, int acc) 
   }
   return acc;
 }
+
+// 2- Code Ruby
+
+def reducer(numbers, reducer_function, acc)
+  numbers.each do |element|
+    acc = reducer_function.call(acc, element)
+  end
+  acc
+end
+
+numbers = [1, 2, 3, 4]
+reducer_numbers = reducer(numbers, ->(acc, el) { el + acc }, 20)
+puts reducer_numbers
 
