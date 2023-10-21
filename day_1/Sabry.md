@@ -102,4 +102,36 @@ bool some(Iterable<int> list, bool Function(int) someFunction) {
     return false;
 }
 
+// Task 3
+// code Dart
+import 'dart:io';
+
+void main() {
+  List<int> numbers = [1, 2, 3, 4];
+  int reducerNumbers = reducer(numbers, (acc, el) { return el + acc;}, 20);
+  print(reducerNumbers);
+}
+
+int reducer(Iterable<int> list, int Function(int,int) reducerFunction, int acc) {
+  for (int element in list) {
+    reducerFunction(acc,element);
+    acc += element;
+  }
+  return acc;
+}
+import 'dart:io';
+
+void main() {
+  List<int> numbers = [1, 2, 3, 4];
+  int reducerNumbers = reducer(numbers, (acc, el) { return el + acc;}, 20);
+  print(reducerNumbers);
+}
+
+int reducer(Iterable<int> list, int Function(int,int) reducerFunction, int acc) {
+  for (int element in list) {
+    reducerFunction(acc,element);
+    acc += element;
+  }
+  return acc;
+}
 
