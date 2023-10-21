@@ -46,3 +46,30 @@ bool any(Iterable<int> list, bool Function(int) anyFunction) {
   else
     return false;
 }
+
+// Task 3
+import 'dart:io';
+
+void main() {
+  List<int> numbers = [1, 2, 3, 4, 5];
+  bool anyNumbers = any(numbers, (int number) => number == 2);
+  print(anyNumbers);
+}
+
+bool any(Iterable<int> list, bool Function(int) anyFunction) {
+  List<int> mappedList = [];
+
+  for (int element in list) {
+    if (anyFunction(element)) {
+      mappedList.add(element);
+    }
+    ;
+  }
+  // print(mappedList.length);
+  // print(list.length);
+  if (mappedList.length == list.length)
+    return true;
+  else
+    return false;
+}
+
