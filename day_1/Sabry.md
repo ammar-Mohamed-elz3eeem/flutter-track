@@ -21,3 +21,28 @@ List<T> map<T>(Iterable<T> list, T Function(T) mappingFunction, bool Checker) {
 
   return mappedList;
 }
+
+// Task 2
+import 'dart:io';
+
+void main() {
+  List<int> numbers = [1, 2, 3, 4, 5];
+  bool anyNumbers = any(numbers, (int number) => number == 2);
+  print(anyNumbers);
+}
+
+bool any(Iterable<int> list, bool Function(int) anyFunction) {
+  List<int> mappedList = [];
+
+  for (int element in list) {
+    if (anyFunction(element)) {
+      mappedList.add(element);
+      break;
+    }
+    ;
+  }
+  if (mappedList.length > 0)
+    return true;
+  else
+    return false;
+}
