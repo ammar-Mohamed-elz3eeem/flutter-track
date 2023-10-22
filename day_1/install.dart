@@ -44,7 +44,6 @@ void main () {
 
   sum(5, 10);
   sum_printer(5, 10);
-
 }
 
 // function_Type function_name(parameters) {
