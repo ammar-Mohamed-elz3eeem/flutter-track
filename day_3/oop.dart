@@ -10,7 +10,7 @@
 // magic methods: call, operators
 // typedefs
 
-import 'classes.dart';
+// import 'classes.dart';
 
 class Rectangle extends Object{
   final double width;
@@ -23,9 +23,9 @@ class Rectangle extends Object{
     return new Rectangle(width: otherRect.width * this.width, height: otherRect.height * this.height);
   }
 
-  // Rectangle operator -(Rectangle otherRect) {
-  //   return new Rectangle(width: this.width - otherRect.width, height: this.height - otherRect.height);
-  // }
+  Rectangle operator -(Rectangle otherRect) {
+    return new Rectangle(width: this.width - otherRect.width, height: this.height - otherRect.height);
+  }
 
   bool operator ==(Object otherRect) {
     Rectangle rect = otherRect as Rectangle;
@@ -67,9 +67,9 @@ void main() {
 
   Rectangle rect1 = new Rectangle(width: 50, height: 30);
   Rectangle rect2 = new Rectangle(height: 30, width: 50);
-  Rectangle rect5 = rect1 - rect2;
-  Rectangle rect3 = rect1 + rect2;
-  Rectangle rect4 = rect1 + rect2 + rect3;
+  // Rectangle rect5 = rect1 - rect2;
+  // Rectangle rect3 = rect1 + rect2;
+  // Rectangle rect4 = rect1 + rect2 + rect3;
 
   print(rect1 == rect2);
 
