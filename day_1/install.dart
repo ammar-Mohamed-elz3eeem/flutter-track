@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 void main () {
   int num = 50;
   String name = "ammar, ammar, ammar";
@@ -8,9 +6,9 @@ void main () {
     "age": 20,
     "eduction": "High School"
   };
-  double salary = 551.25;
+  // double salary = 551.25;
   List<int> numbers = [6,5,4,3,2,1];
-  bool isChanged = false;
+  // bool isChanged = false;
 
   print(name.padRight(16, "#"));
   print(person.containsKey("eduction"));
