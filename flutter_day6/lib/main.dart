@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_day6/api_models/product_class.dart';
 
 // cd .\path\to\folder
 // flutter create .\<FLUTTER_PROJECT_FOLDER>
@@ -96,3 +97,112 @@ import 'package:flutter/material.dart';
 // void main() {
 //   runApp(HomePage());
 // }
+
+List<Widget> buildProductsSection() {
+  return Product.prods.map((product) => ProductCard(product)).toList();
+}
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+
+  const ProductCard(
+    this.product, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.lightBlue,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Image.asset(
+            product.image_path,
+            width: 200,
+            height: 100,
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(product.name),
+                  Text(product.items_in_stock.toString())
+                ],
+              ),
+              Text(product.price.toString())
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+// void main() {
+//   runApp(MaterialApp(
+//     home: Scaffold(
+//       appBar: AppBar(
+//         title: Image.asset(
+//           "images/logo.png",
+//           width: 25,
+//           height: 25,
+//         ),
+//       ),
+//       body: SingleChildScrollView(
+//         scrollDirection: Axis.vertical,
+//         child: Column(
+//           children: [...buildProductsSection()],
+//         ),
+//       ),
+//     ),
+//   ));
+// }
+
+class ShopPage extends StatelessWidget {
+  const ShopPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: buildProductsSection(),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          const Text("Home Page"),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/products");
+            },
+            child: const Text(
+              "Go To Shop",
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    routes: {
+      "/products": (BuildContext context) => ShopPage(),
+      "/": (BuildContext context) => HomePage(),
+    },
+    initialRoute: "/",
+  ));
+}
